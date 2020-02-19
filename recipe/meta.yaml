@@ -14,8 +14,8 @@ build:
   number: 0
   entry_points:
     - napari=napari.__main__:main
-  script: python setup.py install --single-version-externally-managed --record=record.txt
-
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  skip: True  # [py<36]
 
 requirements:
   build:

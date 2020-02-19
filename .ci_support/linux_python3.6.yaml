@@ -1,7 +1,7 @@
 channel_sources:
-- nsls2forge,defaults
+- conda-forge,defaults
 channel_targets:
-- nsls2forge main
+- conda-forge main
 docker_image:
 - condaforge/linux-anvil-comp7
 pin_run_as_build:
