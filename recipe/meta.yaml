@@ -12,17 +12,17 @@ source:
 
 build:
   number: 0
-  noarch: python
   entry_points:
     - napari=napari.__main__:main
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  skip: True  # [py<36]
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
   run:
-    - python >=3.6
+    - python
     - backcall >=0.1.0
     - dask >=2.1.0
     - fsspec >=0.3.3
@@ -32,13 +32,14 @@ requirements:
     - numpy >=1.10.0
     - numpydoc >=0.9.1
     - pyopengl >=3.1.0
+    # This came from the PyPI package's dependency. We prefer to use PyQt backend.
     # - pyside2 >=5.12.3
     - pyqt >=5.9
     - qtconsole >=4.5.1
     - qtpy >=1.7.0
     - scikit-image >=0.15.0
     - scipy >=1.2.0
-    - vispy # >=0.6.1
+    - vispy >=0.6.1
     - wrapt >=1.11.1
     - zarr >=2.3.0
 
