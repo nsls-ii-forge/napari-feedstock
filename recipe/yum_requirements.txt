@@ -1,0 +1,3 @@
+mesa-libGL-devel
+# We don't need it for now as the CLI tests are not run.
+# xorg-x11-server-Xvfb
