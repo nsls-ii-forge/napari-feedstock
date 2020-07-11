@@ -1,6 +1,6 @@
 {% set name = "napari" %}
-{% set version = "0.2.2" %}
-{% set sha256 = "0e4a20f20be5db9224383e090d64718fb42c5359cdd8ee8be5c01076b7df230d" %}
+{% set version = "0.3.4" %}
+{% set sha256 = "23c0a0dde1337726e1913b674fc181c5f00381276fc706137879d7ad1bd86d89" %}
 
 package:
   name: {{ name|lower }}
@@ -11,72 +11,64 @@ source:
   sha256: {{ sha256 }}
 
 build:
+  noarch: python
   number: 0
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
-    - napari=napari.__main__:main
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
-  skip: True  # [py<36]
+    - napari = napari.__main__:main
 
 requirements:
+  build:
+    - pep517
+    - setuptools_scm
   host:
-    - python
+    - python >=3.6
     - pip
+    - setuptools_scm
   run:
-    - python
-    - backcall >=0.1.0
-    - dask >=2.1.0
-    - fsspec >=0.3.3
-    - imageio >=2.5.0
-    - ipykernel ==5.1.1
-    - ipython >=7.7.0
-    - numpy >=1.10.0
-    - numpydoc >=0.9.1
-    - pyopengl >=3.1.0
-    # This came from the PyPI package's dependency. We prefer to use PyQt backend.
-    # - pyside2 >=5.12.3
+    - python >=3.6
+    - backcall
+    - cachey
+    - dask
+    - fsspec
+    - imageio
+    - ipykernel
+    - ipython
+    - jupyter_client
+    - napari-plugin-engine
+    - napari-svg
+    - numpy
+    - numpydoc
+    - pluggy
+    - pyopengl
     - pyqt >=5.9
-    - qtconsole >=4.5.1
-    - qtpy >=1.7.0
-    - scikit-image >=0.15.0
-    - scipy >=1.2.0
-    - vispy >=0.6.1
-    - wrapt >=1.11.1
-    - zarr >=2.3.0
+    - qtconsole
+    - qtpy
+    - scikit-image
+    - scipy
+    - tifffile
+    - vispy >=0.6.4
+    - wrapt
+    - zarr
 
 test:
+  requires:
+    - pandas
+    - pytest
+    - pytest-faulthandler
+    - pytest-ordering
+    - pytest-qt
+    - pytest-timeout
+    - xarray
+    - zarr
   imports:
-    - benchmarks
     - napari
-    - napari._qt
-    - napari._qt.layers
-    - napari._qt.tests
-    - napari._vispy
-    - napari.components
-    - napari.layers
-    - napari.layers.base
-    - napari.layers.image
-    - napari.layers.image.tests
-    - napari.layers.labels
-    - napari.layers.points
-    - napari.layers.shapes
-    - napari.layers.shapes.shape_models
-    - napari.layers.surface
-    - napari.layers.vectors
-    - napari.resources
-    - napari.resources.icons
-    - napari.util
-    - napari.util.colormaps
-    - napari.util.colormaps.vendored
-    - napari.util.list
-    - napari.util.tests
-  commands:
-    - napari --help
 
 about:
-  home: https://napari.org
-  license: BSD License
+  home: http://napari.org
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: n-dimensional array viewer in Python.
-  doc_url: https://napari.org
+  summary: a fast n-dimensional image viewer in Python
+  doc_url: http://napari.org
   dev_url: https://github.com/napari/napari
