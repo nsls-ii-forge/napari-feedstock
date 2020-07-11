@@ -27,29 +27,30 @@ requirements:
     - setuptools_scm
   run:
     - python >=3.6
-    - numpy
-    - scipy
-    - scikit-image
-    - vispy >=0.6.4
-    - dask
+    - backcall
     - cachey
-    - zarr
+    - dask
     - fsspec
     - imageio
     - ipykernel
+    - ipython
     - jupyter_client
-    - qtpy
-    - qtconsole
-    - IPython
-    - backcall
-    - pluggy
-    - PyOpenGl
-    - PySide2
-    - wrapt
-    - numpydoc
     - napari-plugin-engine
     - napari-svg
+    - numpy
+    - numpydoc
+    - pluggy
+    # - PyOpenGl
+    # - PySide2
+    - pyqt >=5.9
+    - qtconsole
+    - qtpy
+    - scikit-image
+    - scipy
     - tifffile
+    - vispy >=0.6.4
+    - wrapt
+    - zarr
 
 test:
   requires:
@@ -63,12 +64,6 @@ test:
     - zarr
   imports:
     - napari
-  commands:
-    - setx QT_API "pyside2"  # [win]
-    - export QT_API=pyside2  # [unix]
-    - which napari
-    #- DISPLAY=localhost:1.0 xvfb-run -a bash -c 'napari --info'
-    #- pytest --pyargs napari
 
 about:
   home: http://napari.org
