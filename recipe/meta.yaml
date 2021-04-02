@@ -41,6 +41,7 @@ requirements:
     - numpy
     - numpydoc
     - pluggy
+    - pydantic
     - pyopengl
     - pyqt >=5.9
     - qtconsole
