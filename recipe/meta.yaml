@@ -1,6 +1,6 @@
 {% set name = "napari" %}
-{% set version = "0.4.2" %}
-{% set sha256 = "88aa0d50704a2e0307d60b102cbdd92cf1a469db0996b6500a577f45c1188560" %}
+{% set version = "0.4.8" %}
+{% set sha256 = "fc0221192cbd57133c84017cfb3695470ec0660a6202e2a79c0ffdd8358f7fcf" %}
 
 package:
   name: {{ name|lower }}
